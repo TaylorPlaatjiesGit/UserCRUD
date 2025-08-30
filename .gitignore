@@ -1,57 +1,41 @@
-<<<<<<< HEAD
 /vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
-
-storage/*.key
+/node_modules/
 .env
-Homestead.yaml
-Homestead.json
-/.vagrant
-.phpunit.result.cache
-
-/public/build
-/storage/pail
 .env.backup
 .env.production
-.phpactor.json
 auth.json
-=======
-*.log
-.DS_Store
-.env
-.env.backup
-.env.production
-.phpactor.json
 .phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
-/auth.json
-/node_modules
+.phpactor.json
+/storage/*.key
+/storage/pail
 /public/build
 /public/hot
 /public/storage
-/storage/*.key
-/storage/pail
-/vendor
-Homestead.json
-Homestead.yaml
+
+# Laravel 4
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen
+public/storage
+public/hot
+
+# Laravel with public_html
+public_html/storage
+public_html/hot
+
+/.idea/
+/.vscode/
+/.fleet/
+/.nova/
+/.zed/
+/.vagrant
+
+.DS_Store
 Thumbs.db
->>>>>>> a029fc6 (Initial Commit)
+*.log
+npm-debug.log
+yarn-error.log
+
+Homestead.yaml
+Homestead.json
