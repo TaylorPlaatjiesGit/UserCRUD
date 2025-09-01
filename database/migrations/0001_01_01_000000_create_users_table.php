@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
             $table->unsignedBigInteger('language_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

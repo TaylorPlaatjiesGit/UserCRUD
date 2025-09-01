@@ -13,10 +13,35 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
-        dd($data);
+        $user = User::create($data);
+        
+        $user->interests()->sync($data['interests']);
 
         return redirect()
             ->back()
-            ->with('message', 'User stored successfully.');
+            ->with('success', 'User stored successfully.');
+    }
+
+    public function update(StoreUserRequest $request, User $user): RedirectResponse
+    {
+        $data = $request->validated();
+
+        $user->update($data);
+        
+        $user->interests()->sync($data['interests']);
+
+        return redirect()
+            ->back()
+            ->with('success', 'User updated successfully.');
+    }
+
+    public function delete(User $user): RedirectResponse
+    {
+        $user->interests()->detach();
+        $user->delete();
+
+        return redirect()
+            ->back()
+            ->with('success', 'User deleted successfully.');
     }
 }

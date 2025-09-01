@@ -14,9 +14,9 @@ class HomeController extends Controller
     {
         $data = [];
 
-        $data['users'] = User::all();
-        $data['languages'] = Language::all();
-        $data['interests'] = Interest::all();
+        $data['users'] = User::with('interests')->paginate(10);
+        $data['languages'] = Language::orderBy('language')->get();
+        $data['interests'] = Interest::orderBy('interest')->get();
 
         return view('home', $data);
     }

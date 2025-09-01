@@ -24,8 +24,8 @@ class StoreUserRequest extends FormRequest
         return [
             'name'          => 'required',
             'surname'       => 'required',
-            'id_number'     => 'required|numeric|min:13',
-            'mobile_number' => 'required|numeric',
+            'id_number'     => 'required|numeric|digits:13',
+            'mobile_number' => 'required|numeric|digits_between:10,20',
             'email'         => 'required|email',
             'birth_date'    => 'required|date',
             'language_id'   => 'required|integer|exists:languages,id',
