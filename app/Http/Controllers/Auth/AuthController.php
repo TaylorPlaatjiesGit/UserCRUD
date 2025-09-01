@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -34,9 +33,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        dd(User::all());
-
-        if (Auth::attempt([ $request->email, $request->password ])) {
+        if (Auth::attempt($request->only('email', 'password'))) {
             return redirect()->intended('/home');
         }
 
@@ -50,10 +47,9 @@ class AuthController extends Controller
     /**
      * Log the user out
      *
-     * @param Request $request
      * @return RedirectResponse
      */
-    public function logout(Request $request): RedirectResponse
+    public function logout(): RedirectResponse
     {
         Auth::logout();
 
