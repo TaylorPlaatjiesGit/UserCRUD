@@ -9,6 +9,12 @@ use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
+    /**
+     * Function to store the user
+     *
+     * @param StoreUserRequest $request
+     * @return RedirectResponse
+     */
     public function store(StoreUserRequest $request): RedirectResponse
     {
         $data = $request->validated();
@@ -22,6 +28,13 @@ class UserController extends Controller
             ->with('success', 'User stored successfully.');
     }
 
+    /**
+     * Function to update the user
+     *
+     * @param StoreUserRequest $request
+     * @param User $user
+     * @return RedirectResponse
+     */
     public function update(StoreUserRequest $request, User $user): RedirectResponse
     {
         $data = $request->validated();
@@ -35,6 +48,12 @@ class UserController extends Controller
             ->with('success', 'User updated successfully.');
     }
 
+    /**
+     * Function to delete the user
+     *
+     * @param User $user
+     * @return RedirectResponse
+     */
     public function delete(User $user): RedirectResponse
     {
         $user->interests()->detach();

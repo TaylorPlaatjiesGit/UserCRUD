@@ -122,7 +122,7 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <label for="birth_date" class="form-label">Birth Date</label>
-                            <input type="date" name="birth_date" class="form-control @error('birth_date') is-invalid @enderror" value="{{ old('birth_date') }}" required>
+                            <input type="date" id="birth_date" name="birth_date" class="form-control @error('birth_date') is-invalid @enderror" value="{{ old('birth_date') }}" required>
                             @error('birth_date') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
@@ -207,6 +207,12 @@
                 $('#submitBtn').text('Submit');
             }
         });
+
+        // Set max date for birth_date, i.e. only days before today should be selectable.
+        const today = new Date();
+        today.setDate(today.getDate() - 1);
+        const maxDate = today.toISOString().split('T')[0];
+        document.getElementById('birth_date').setAttribute('max', maxDate);
     });
 </script>
 @endpush

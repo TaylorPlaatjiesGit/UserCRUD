@@ -10,6 +10,11 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
+    /**
+     * Show the home screen
+     *
+     * @return View
+     */
     public function index(): View
     {
         $data = [];
