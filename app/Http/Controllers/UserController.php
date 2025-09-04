@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Jobs\SendUserNotification;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 
@@ -22,6 +23,8 @@ class UserController extends Controller
         $user = User::create($data);
         
         $user->interests()->sync($data['interests']);
+
+        SendUserNotification::dispatch($user->id, "You have been added successfully!");
 
         return redirect()
             ->back()
